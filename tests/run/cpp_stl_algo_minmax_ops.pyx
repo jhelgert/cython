@@ -1,5 +1,5 @@
 # mode: run
-# tag: cpp, werror, cpp17
+# tag: cpp, werror, cpp17, cppexecpolicies
 
 from cython.operator cimport dereference as deref
 
@@ -8,6 +8,7 @@ from libcpp.algorithm cimport (min_element, max_element, minmax, minmax_element,
                                clamp)
 from libcpp.vector cimport vector
 from libcpp.pair cimport pair
+from libcpp.execution cimport seq
 
 
 cdef bool less(int a, int b):
@@ -31,6 +32,16 @@ def test_min_element_with_pred(vector[int] v):
     0
     """
     cdef vector[int].iterator it = min_element(v.begin(), v.end(), less)
+    return deref(it)
+
+def test_min_element_with_exec(vector[int] v):
+    """
+    Test min_element with exec policy.
+
+    >>> test_min_element_with_exec([0, 1, 2, 3, 4, 5])
+    0
+    """
+    cdef vector[int].iterator it = min_element(seq, v.begin(), v.end())
     return deref(it)
 
 def test_max_element(vector[int] v):
