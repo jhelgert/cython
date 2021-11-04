@@ -13,7 +13,7 @@ from libcpp.pair cimport pair
 cdef bool less(int a, int b):
     return a < b
 
-def bool greater(int a, int b):
+cdef bool greater(int a, int b):
     return a > b
 
 def test_min_element(vector[int] v):
