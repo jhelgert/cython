@@ -54,15 +54,15 @@ def test_max_element_with_exec(vector[int] v):
     cdef vector[int].iterator it = max_element(seq, v.begin(), v.end())
     return deref(it)
 
-def test_max_element_with_exec_and_pred(vector[int] v):
-    """
-    Test max_element with execution policy and binary predicate.
+# def test_max_element_with_exec_and_pred(vector[int] v):
+#     """
+#     Test max_element with execution policy and binary predicate.
 
-    >>> test_max_element_with_exec_and_pred([0, 1, 2, 3, 4, 5])
-    5
-    """
-    cdef vector[int].iterator it = max_element(seq, v.begin(), v.end(), less)
-    return deref(it)
+#     >>> test_max_element_with_exec_and_pred([0, 1, 2, 3, 4, 5])
+#     5
+#     """
+#     cdef vector[int].iterator it = max_element(seq, v.begin(), v.end(), less)
+#     return deref(it)
 
 def test_minmax(int a, int b):
     """
