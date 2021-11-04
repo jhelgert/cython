@@ -13,9 +13,6 @@ from libcpp.pair cimport pair
 cdef bool less(int a, int b):
     return a < b
 
-cdef bool greater(int a, int b):
-    return a > b
-
 def test_min_element(vector[int] v):
     """
     Test min_element.
@@ -53,7 +50,7 @@ def test_max_element_with_pred(vector[int] v):
     >>> test_max_element_with_pred([0, 1, 2, 3, 4, 5])
     5
     """
-    cdef vector[int].iterator it = max_element(v.begin(), v.end(), greater)
+    cdef vector[int].iterator it = max_element(v.begin(), v.end(), less)
     return deref(it)
 
 def test_minmax(int a, int b):
@@ -103,14 +100,14 @@ def test_clamp(int v, int lo, int hi):
     >>> test_clamp(-129, -128, 255)
     -128
     """
-    return clamp(-129, -128, 255)
+    return clamp(v, lo, hi)
 
 def test_clamp_with_pred(int v, int lo, int hi):
     """
     Test clamp with binary predicate
 
-    >>> test_clamp(-129, -128, 255)
+    >>> test_clamp_with_pred(-129, -128, 255)
     -128
     """
-    return clamp(-129, -128, 255, less)
+    return clamp(v, lo, hi, less)
 
