@@ -244,7 +244,7 @@ cdef extern from "<algorithm>" namespace "std" nogil:
 
     # Minimum/maximum operations
     Iter min_element[Iter](Iter first, Iter last) except +
-    Iter min_element[Iter, Compare](Iter first, Iter last, Compare comp) except +
+    #Iter min_element[Iter, Compare](Iter first, Iter last, Compare comp) except +
     Iter min_element[ExecutionPolicy, Iter](ExecutionPolicy&& policy, Iter first, Iter last) except +
     Iter max_element[Iter](Iter first, Iter last) except +
     Iter max_element[Iter, Compare](Iter first, Iter last, Compare comp) except +
